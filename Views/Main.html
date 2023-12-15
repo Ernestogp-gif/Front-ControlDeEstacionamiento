@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Principal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../CSS/Main.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-global navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Mantenedor de Estacionamiento</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-user navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> <span id="asd"></span> </a></li>
+                    <li><a href="../Views/Login.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+    <nav class="navbar-primary">
+        <a href="#" class="btn-expand-collapse"><span class="glyphicon glyphicon-menu-left"></span></a>
+        <ul class="navbar-primary-menu">
+            <li>
+                <a href="#" onclick="mostrarVista('vista1')"><img src="../favicon/cliente-30.png" alt=""><span
+                        class="nav-label"> Cliente</span></a>
+                <a href="#" onclick="mostrarVista('vista2')"><img src="../favicon/vehiculo-30.png" alt=""><span
+                        class="nav-label"> Vehiculo</span></a>
+                <a href="#" onclick="mostrarVista('vista3')"><img src="../favicon/plaza-30.png" alt=""><span
+                        class="nav-label"> Plaza</span></a>
+            </li>
+        </ul>
+    </nav>
+    <div class="main-content">
+        <div id="vista1" class="hidden">
+            <h3 class="Titulo">Mantenedor de Clientes</h3>
+            <div class="container">
+                <div class="container">
+                    <div class="row button">
+                        <button type="button" id="RegCliente" class="btn btn-primary">Registrar</button>
+
+                        <button id="ExpCliente" type="button" class="btn btn-secondary">Exportar</button>
+                        <select id="SelectFilCliente" class="col"></select>
+                        <input id="DatoFilCliente" class="col" />
+                        <button class="btn btn-danger" onclick="limpiarFiltro('Cliente')">Cancelar</button>
+                        <button class="btn btn-success" onclick="filtrarTabla('Cliente')">Buscar</button>
+
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row  table-container">
+                        <table id="tablecliente">
+                            <thead>
+                                <tr>
+                                    <th class="action">Acción</th>
+                                    <th>DNI</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Telefono</th>
+                                </tr>
+                            </thead>
+                            <tbody id="DatosCliente">
+                                <!-- Aquí se cargarán dinámicamente los elementos existentes -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ModalCliente" class="modal">
+                <div class="modal-content">
+                    <span class="close" id="closeModalBtnCliente">&times;</span>
+                    <h2>Registro de Datos</h2>
+                    <div class="row  content-modal">
+                        <div class="">
+                            <label class="">DNI:</label>
+                            <input type="text" class="" id="ModDNI">
+                            <label class="">Nombre:</label>
+                            <input type="text" class="" id="ModNombre">
+                        </div>
+                    </div>
+                    <div class="row  content-modal">
+                        <label class="">Apellido:</label>
+                        <input type="text" id="ModApellido">
+
+                        <label>Telefono:</label>
+                        <input type="text" id="ModTelefono">
+                    </div>
+                    <button type="submit" id="BtnGuardaCliente" class="btn btn-primary"
+                        onclick="GuardarCliente()">Enviar</button>
+                    <button type="submit" id="BtnEditaCliente" class="btn btn-primary"
+                        onclick="EditarCliente()">Editar</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="vista2" class="hidden">
+            <h3 class="Titulo">Mantenedor de Vehiculos</h3>
+            <div class="container">
+                <div class="container">
+                    <div class="row button">
+                        <button type="button" id="RegVehiculo" class="btn btn-primary">Registrar</button>
+                        <button id="ExpVehiculo" type="button" class="btn btn-secondary">Exportar</button>
+                        <select id="SelectFilVehiculo" class="col"></select>
+                        <input id="DatoFilVehiculo" class="col" />
+                        <button class="btn btn-danger" onclick="limpiarFiltro('Vehiculo')">Cancelar</button>
+                        <button class="btn btn-success" onclick="filtrarTabla('Vehiculo')">Buscar</button>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row  table-container">
+                        <table id="tableVehiculo">
+                            <thead>
+                                <tr>
+                                    <th>Acción</th>
+                                    <th>Placa</th>
+                                    <th>Modelo</th>
+                                    <th>Color</th>
+                                    <th>Marca</th>
+                                    <th>DNI</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                </tr>
+                            </thead>
+                            <tbody id="DatosVehiculo">
+                                <!-- Aquí se cargarán dinámicamente los elementos existentes -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ModalVehiculo" class="modal">
+                <div class="modal-content">
+                    <span class="close" id="closeModalBtnVehiculo">&times;</span>
+                    <h2>Registro de Datos</h2>
+                    <div class="row  content-modal">
+                        <div class="">
+                            <label class="">Placa:</label>
+                            <input type="text" class="" id="ModPlaca">
+                            <label class="">DNI:</label>
+                            <input type="text" class="" id="ModDNIV">
+                            <label class="">Modelo:</label>
+                            <input type="text" class="" id="ModModelo">
+                        </div>
+                    </div>
+                    <div class="row  content-modal">
+                        <label class="">Color:</label>
+                        <input type="text" id="ModColor">
+
+                        <label>Marca:</label>
+                        <input type="text" id="ModMarca">
+                    </div>
+                    <button type="submit" id="BtnGuardaVehiculo" class="btn btn-primary"
+                        onclick="GuardarVehiculo()">Enviar</button>
+                    <button type="submit" id="BtnEditaVehiculo" class="btn btn-primary"
+                        onclick="EditarVehiculo()">Editar</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="vista3" class="hidden">
+            <h3 class="Titulo">Mantenedor de Plazas</h3>
+            <div class="container">
+                <div class="container">
+                    <div class="row button">
+                        <button type="button" id="RegPlaza" class="btn btn-primary">Registrar</button>
+                        <button id="ExpPlaza" type="button" class="btn btn-secondary">Exportar</button>
+                        <select id="SelectFilPlaza" class="col"></select>
+                        <input id="DatoFilPlaza" class="col" />
+                        <button class="btn btn-danger" onclick="limpiarFiltro('Plaza')">Cancelar</button>
+                        <button class="btn btn-success" onclick="filtrarTabla('Plaza')">Buscar</button>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row  table-container">
+                        <table id="tablePlaza">
+                            <thead>
+                                <tr>
+                                    <th>Acción</th>
+                                    <th>Codigo</th>
+                                    <th>estado</th>
+                                    <th>DNI</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                </tr>
+                            </thead>
+                            <tbody id="DatosPlaza">
+                                <!-- Aquí se cargarán dinámicamente los elementos existentes -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ModalPlaza" class="modal">
+                <div class="modal-content">
+                    <span class="close" id="closeModalBtnPlaza">&times;</span>
+                    <h2>Registro de Datos</h2>
+                    <div class="row  content-modal">
+                        <div class="">
+                            <label class="">Codigo:</label>
+                            <input type="text" class="" id="ModCodPlaza">
+                            <label style="display: none;">Estado:</label>
+                            <input type="text" class="" style="display: none;" id="Modestado">
+                        </div>
+                    </div>
+                    <div class="row  content-modal">
+                        <label>DNI:</label>
+                        <input type="text" id="ModDNIP">
+
+                        <label style="display: none;">Nombre:</label>
+                        <input type="text" style="display: none;" id="ModNombreP">
+
+                        <label style="display: none;">Apellido:</label>
+                        <input type="text" style="display: none;" id="ModApellidoP">
+                    </div>
+                    <button type="submit" id="BtnGuardaPlaza" class="btn btn-primary"
+                        onclick="GuardarPlaza()">Enviar</button>
+                    <button type="submit" id="BtnEditaPlaza" class="btn btn-primary"
+                        onclick="EditarPlaza()">Editar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="../Script/Main.js"></script>
+    <script src="../Script/Cliente.js"></script>
+    <script src="../Script/Vehiculo.js"></script>
+    <script src="../Script/Plaza.js"></script>
+
+</body>
+
+</html>
